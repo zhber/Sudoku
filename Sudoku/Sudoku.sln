@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sudoku", "Sudoku\Sudoku.vcxproj", "{005FEBD4-3FB7-4305-8FB1-D7643FFA73E7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sudoku", "Sudoku.vcxproj", "{8EE95B69-AA12-42EA-A008-A113FEA912EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +13,19 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{005FEBD4-3FB7-4305-8FB1-D7643FFA73E7}.Debug|x64.ActiveCfg = Debug|x64
-		{005FEBD4-3FB7-4305-8FB1-D7643FFA73E7}.Debug|x64.Build.0 = Debug|x64
-		{005FEBD4-3FB7-4305-8FB1-D7643FFA73E7}.Debug|x86.ActiveCfg = Debug|Win32
-		{005FEBD4-3FB7-4305-8FB1-D7643FFA73E7}.Debug|x86.Build.0 = Debug|Win32
-		{005FEBD4-3FB7-4305-8FB1-D7643FFA73E7}.Release|x64.ActiveCfg = Release|x64
-		{005FEBD4-3FB7-4305-8FB1-D7643FFA73E7}.Release|x64.Build.0 = Release|x64
-		{005FEBD4-3FB7-4305-8FB1-D7643FFA73E7}.Release|x86.ActiveCfg = Release|Win32
-		{005FEBD4-3FB7-4305-8FB1-D7643FFA73E7}.Release|x86.Build.0 = Release|Win32
+		{8EE95B69-AA12-42EA-A008-A113FEA912EF}.Debug|x64.ActiveCfg = Debug|x64
+		{8EE95B69-AA12-42EA-A008-A113FEA912EF}.Debug|x64.Build.0 = Debug|x64
+		{8EE95B69-AA12-42EA-A008-A113FEA912EF}.Debug|x86.ActiveCfg = Debug|Win32
+		{8EE95B69-AA12-42EA-A008-A113FEA912EF}.Debug|x86.Build.0 = Debug|Win32
+		{8EE95B69-AA12-42EA-A008-A113FEA912EF}.Release|x64.ActiveCfg = Release|x64
+		{8EE95B69-AA12-42EA-A008-A113FEA912EF}.Release|x64.Build.0 = Release|x64
+		{8EE95B69-AA12-42EA-A008-A113FEA912EF}.Release|x86.ActiveCfg = Release|Win32
+		{8EE95B69-AA12-42EA-A008-A113FEA912EF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7D52188F-F1F8-46AE-960F-B5B1A111120F}
+		SolutionGuid = {21DFAD66-E9B8-449D-B384-076399DDB4A7}
 	EndGlobalSection
 EndGlobal
