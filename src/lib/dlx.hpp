@@ -12,7 +12,7 @@ struct DLX
 	const static int maxm=330;
 	const static int maxnode=200010;//矩阵中最多'1'的个数
 
-	#define FF(i,A,s) for(int i=A[s];i!=s;i=A[i])
+	#define FF(i,A,s) for(i=A[s];i!=s;i=A[i])
 
 	int L[maxnode],R[maxnode],U[maxnode],D[maxnode];
 	int size,col[maxnode],row[maxnode],s[maxm],H[maxn];
@@ -20,14 +20,15 @@ struct DLX
 	int ans[maxn],cnt;
 	void init(int n,int m)
 	{
-		for(int i=0;i<=m;i++)
+		register int i;
+		for(i=0;i<=m;i++)
 		{
 			L[i]=i-1;
 			R[i]=i+1;
 			U[i]=D[i]=i;
 			s[i]=0;
 		}
-		for(int i=1;i<=n;i++)H[i]=-1;
+		for(i=1;i<=n;i++)H[i]=-1;
 		L[0]=m;
 		R[m]=0;
 		size=m+1;
@@ -57,12 +58,14 @@ struct DLX
 	{
 		L[R[c]]=L[c];
 		R[L[c]]=R[c];
+		register int i,j;
 		FF(i,D,c)FF(j,R,i)
 			U[D[j]]=U[j],D[U[j]]=D[j],--s[col[j]];
 	}
 	void add(int c)
 	{
 		R[L[c]]=L[R[c]]=c;
+		register int i,j;
 		FF(i,U,c)FF(j,L,i)
 			++s[col[U[D[j]]=D[U[j]]=j]];
 	}
@@ -76,6 +79,7 @@ struct DLX
 		if(~cnt&&k>=cnt)return false;
 		int c=R[0];
 		bool mk=0;
+		register int i,j;
 		FF(i,R,0) if(s[c]>s[i])c=i;
 		del(c);
 		FF(i,D,c)

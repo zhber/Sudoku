@@ -1,28 +1,28 @@
 namespace fastIO {
-	#define BUF_SIZE 100000
-	#define OUT_SIZE 100000
-	//fread -> read
-	bool IOerror=0;
-	struct fileIO{
+	struct fileIO {
 		FILE *__fastIOInFile=NULL,*__fastIOOutFile=NULL;
-		~fileIO(){if (__fastIOInFile!=NULL)fclose(__fastIOInFile);if(__fastIOOutFile!=NULL)fclose(__fastIOOutFile);}
+		~fileIO(){if(__fastIOInFile!=NULL)fclose(__fastIOInFile);if(__fastIOOutFile!=NULL)fclose(__fastIOOutFile);}
 	}fIO;
 	inline bool refreshIn(const char* file){fopen_s(&fIO.__fastIOInFile,file,"r");return fIO.__fastIOInFile!=NULL;}
-	inline bool refreshOut(const char* file){fopen_s(&fIO.__fastIOOutFile, file, "w");return fIO.__fastIOOutFile!=NULL;}
+	inline bool refreshOut(const char* file){fopen_s(&fIO.__fastIOOutFile,file,"w");return fIO.__fastIOOutFile!=NULL;}
 	//返回值为是否修改成功
-	inline char nc(){static char buf[BUF_SIZE],*p1=buf+BUF_SIZE,*pend=buf+BUF_SIZE;if(p1==pend){p1=buf;pend=buf+fread(buf,1,BUF_SIZE,fIO.__fastIOInFile);if (pend==p1){IOerror=1;return -1;}}return *p1++;}
-	inline bool blank(const char &ch){return ch==' '||ch=='\n'||ch=='\r';}
-	inline void read(int &x){char ch;while (blank(ch = nc()));(ch<'0'||ch>'9')?IOerror=1:x=ch-'0';}
+	#define BUF_SIZE 100000
+	bool IOerror=0;
+	//fread
+	static char ibuf[BUF_SIZE],*pi=ibuf+BUF_SIZE-1,*iend=ibuf+BUF_SIZE;
+	#define GC if(++pi==iend){if((iend=ibuf+fread(pi=ibuf,1,BUF_SIZE,fIO.__fastIOInFile))==ibuf)IOerror=1;}
+	inline bool blank(const register char &ch){return ch==' '||ch=='\n'||ch=='\r';}
+	inline void read(register int &x){GC;while(blank(*pi))GC;(*pi&48)==48&&(*pi&15)<10?x=*pi&15:IOerror=1;}
+	#undef GC
 	//fwrite
+	static char obuf[BUF_SIZE],*po=obuf;
+	const static char *oend=obuf+BUF_SIZE;
 	struct Ostream_fwrite {
 		char *buf,*p1,*pend;
-		Ostream_fwrite(){buf=new char[BUF_SIZE];p1=buf;pend=buf+BUF_SIZE;}
-		void out(const char &ch){if(p1==pend){fwrite(buf,1,BUF_SIZE,fIO.__fastIOOutFile);p1=buf;}*p1++=ch;}
-		void flush(){if(p1!=buf){fwrite(buf,1,p1-buf,fIO.__fastIOOutFile);p1=buf;}}
-		~Ostream_fwrite(){flush();delete[] buf;}
+		Ostream_fwrite(){}
+		void out(const register char &ch){*po=ch;if (++po==oend)fwrite(po=obuf,1,BUF_SIZE,fIO.__fastIOOutFile);}
+		~Ostream_fwrite(){if(po!=obuf)fwrite(obuf,1,po-obuf,fIO.__fastIOOutFile);}
 	}Ostream;
-	inline void print(const char &x){Ostream.out(x);}
-	inline void println(){Ostream.out('\n');}
+	#define print(x) Ostream.out(x)
 	#undef BUF_SIZE
-	#undef OUT_SIZE
 };

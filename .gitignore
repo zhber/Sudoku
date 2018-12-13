@@ -1,3 +1,5 @@
 Sudoku/
 /test cases/*.exe
 /test cases/*.o
+bin/
+!bin/Sudoku.exe
