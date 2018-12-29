@@ -12,8 +12,8 @@
 bin/
 	Sudoku.exe 						Binary executable for Windows x64
 src/								
-	Sudoku-for-VS.cpp				Main function for Visual Studio
-	Sudoku-for-Mingw.cpp			Main function for Mingw
+	Sudoku-for-VS.cpp						Main function for Visual Studio
+	Sudoku-for-Mingw.cpp						Main function for Mingw
 	lib/
 		dlx.hpp						Components for calculation
 		fastIO.hpp					Components for faster input/output
@@ -22,9 +22,9 @@ test/
 	assert.cpp						Source code for assert.exe/Based on Mingw & c++11
 	gen.exe							Generate 100000 same Sudoku for testing '-s' speed
 	gen.cpp							Source code for gen.exe/Based on Mingw & c++11
-	testcase.txt					Constructed data for testing '-s' correctness
+	testcase.txt							Constructed data for testing '-s' correctness
 docs/
-	设计文档.docx					Design document of the project (not in English)
+	设计文档.docx							Design document of the project (not in English)
 ```
 
 #### Compile & Run
