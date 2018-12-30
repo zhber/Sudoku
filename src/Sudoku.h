@@ -13,7 +13,7 @@ inline void work_s();
 inline int init(int, char**);
 
 static int block[9][9];
-static int a[10] =	 { 0,1,2,3,4,5,6,7,8,9 };
+static int a[11] =	 { 0,1,2,3,4,5,6,7,8,9,0 };
 static int row[10] = { 0,1,2,3,4,5,6,7,8,9 };
 static int col[10] = { 0,1,2,3,4,5,6,7,8,9 };
 static int sample[9][9] = { { 1,4,3,6,2,8,5,7,9 },

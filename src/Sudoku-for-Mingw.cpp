@@ -69,7 +69,7 @@ inline void work_c(int n)//处理参数是-c的情况
 			{
 				now.out_c();
 				if(!(--n))return;else print('\n');
-				std::next_permutation(a+1, a + 9);
+				std::next_permutation(a + 2, a + 10);
 			}
 			std::next_permutation(col + 3, col + 6);
 		}
