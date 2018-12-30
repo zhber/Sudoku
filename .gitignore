@@ -2,3 +2,7 @@ Sudoku/
 /test cases/*.o
 bin/
 !bin/Sudoku.exe
+test/
+!test/*.exe
+!test/*.txt
+!test/unittest.cpp

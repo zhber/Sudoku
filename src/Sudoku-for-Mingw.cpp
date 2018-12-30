@@ -5,70 +5,54 @@
 #include <ctime>
 #include "lib/dlx.hpp"
 #include "lib/fastIO.hpp"
+#include "Sudoku.h"
 using namespace fastIO;
 DLX dlx;
-static int block[9][9];
-static int a[11] = { 0,1,2,3,4,5,6,7,8,9,0 };
-static int row[10] = { 0,1,2,3,4,5,6,7,8,9 };
-static int col[10] = { 0,1,2,3,4,5,6,7,8,9 };
-static int sample[9][9] = { { 1,4,3,6,2,8,5,7,9 },
-							{ 5,7,2,1,3,9,4,6,8 },
-							{ 9,8,6,7,5,4,2,3,1 },
-							{ 3,9,1,5,4,2,7,8,6 },
-							{ 4,6,8,9,1,7,3,5,2 },
-							{ 7,2,5,8,6,3,9,1,4 },
-							{ 2,3,7,4,8,1,6,9,5 },
-							{ 6,1,9,2,7,5,8,4,3 },
-							{ 8,5,4,3,9,6,1,2,7 } };
-class Sudoku {
-public:
-	int d[9][9];//数字矩阵
-	Sudoku()
-	{
-		memcpy(d, sample, sizeof d);
-	}
-	void init()//初始化
-	{
-		register int i, j;
-		for (i = 0; i < 9; i++)
-			for (j = 0; j < 9; j++)
+Sudoku::Sudoku() noexcept
+{
+	memcpy(d, sample, sizeof d);
+}
+void Sudoku::init()//初始化
+{
+	register int i, j;
+	for (i = 0; i < 9; i++)
+		for (j = 0; j < 9; j++)
+		{
+			if (read(d[i][j]), IOerror)
 			{
-				if (read(d[i][j]), IOerror)
+				if (!i && !j && ~IOerror) return;
+				else
 				{
-					if (!i && !j) return;
-					else
-					{
-						puts("Error : not valid input.");
-						exit(23333);
-					}
+					puts("Error : not valid input.");
+					exit(23333);
 				}
 			}
-	}
-	void out_s()//适用于-s操作的输出
+		}
+}
+void Sudoku::out_s()//适用于-s操作的输出
+{
+	register int i, j;
+	for (i = 0; i < 9; i++)
 	{
-		register int i, j;
-		for (i = 0; i < 9; i++)
+		for (j = 0; j < 9; j++)
 		{
-			for (j = 0; j < 9; j++)
-			{
-				print('0' | d[i][j]);
-				print(j == 8 ? '\n' : ' ');
-			}
+			print('0' | d[i][j]);
+			print(j == 8 ? '\n' : ' ');
 		}
 	}
-	void out_c()//适用于-c操作的输出
+}
+void Sudoku::out_c()//适用于-c操作的输出
+{
+	register int i, j;
+	for (i = 0; i < 9; i++)
 	{
-		register int i, j;
-		for (i = 0; i < 9; i++)
+		for (j = 0; j < 9; j++)
 		{
-			for (j = 0; j < 9; j++)
-			{
-				print('0' | a[d[row[i]][col[j]]]);
-				print(j == 8 ? '\n' : ' ');
-			}
+			print('0' | a[d[row[i]][col[j]]]);
+			print(j == 8 ? '\n' : ' ');
 		}
 	}
-};
+}
 inline void work_c(int n)//处理参数是-c的情况
 {
 	refreshOut("sudoku.txt");
@@ -183,6 +167,11 @@ inline int init(int argc,char** argv)//初始化 返回值 0: -c  1: -s
 			}
 			num = num * 10 + argv[2][i] - '0';
 		}
+		if (num < 1 || num > 1000000)
+		{
+			puts("Error : not a valid number.");
+			exit(233);
+		}
 		return 0;
 	}else if (argv[1][0] == '-' && (argv[1][1] == 's' || argv[1][1] == 'S') && argv[1][2] == '\0')
 	{
@@ -206,7 +195,7 @@ inline int init(int argc,char** argv)//初始化 返回值 0: -c  1: -s
 	}
 	else
 	{
-		puts("Error ：no valid command arguments.");
+		puts("Error : no valid command arguments.");
 		exit(-1);
 	}
 }

@@ -14,17 +14,25 @@ bin/
 src/                                    
     Sudoku-for-VS.cpp                   Main function for Visual Studio
     Sudoku-for-Mingw.cpp                Main function for Mingw
+    Sudoku.h                            Header file 
     lib/                                
         dlx.hpp                         Components for calculation
         fastIO.hpp                      Components for faster input/output
 test/                                   
-    assert.exe                          Assert whether '-c' operation is non-repeating
-    assert.cpp                          Source code for assert.exe/Based on Mingw & c++11
+    assert_1.exe                        Assert whether '-c' operation is non-repeating
+    assert_1.cpp                        Source code for assert_1.exe/Based on Mingw & c++11
+    assert_2.exe                        Assert whether '-c/-s' operation gets valid solution
+    assert_2.cpp                        Source code for assert_2.exe/Based on Mingw & c++11
     gen.exe                             Generate 100000 same Sudoku for testing '-s' speed
     gen.cpp                             Source code for gen.exe/Based on Mingw & c++11
-    testcase.txt                        Constructed data for testing '-s' correctness
+    unittest1.cpp                       Unit test code
+    testcase_1.txt                      Constructed correct data for testing '-s' correctness
+    testcase_2.txt                      Constructed wrong data for testing '-s' correctness
+    testcase_3.txt                      Constructed wrong data for testing '-s' correctness
+    testcase_4.txt                      Constructed wrong data for testing '-s' correctness
 docs/                                   
     设计文档.docx                        Design document of the project (not in English)
+    测试文档.docx                        Testing document of the project (not in English)
 ```
 
 #### Compile & Run
